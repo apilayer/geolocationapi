@@ -7,6 +7,8 @@ from starlette.middleware.httpsredirect import HTTPSRedirectMiddleware
 from starlette.middleware.trustedhost import TrustedHostMiddleware
 from starlette.responses import UJSONResponse
 
+from middleware import WWWRedirectMiddleware
+
 app = Starlette()
 app.debug = False
 
@@ -21,6 +23,7 @@ app.add_middleware(
         "www.ipgeolocationapi.com",
     ],
 )
+app.add_middleware(WWWRedirectMiddleware)
 
 
 @app.on_event("startup")
