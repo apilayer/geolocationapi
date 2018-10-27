@@ -11,7 +11,7 @@
       "geolocation"
     ],
     "env": {
-      "WEB_CONCURRENCY": {
+      "GUNICORN_WORKERS": {
         "description": "The number of gunicorn workers to run.",
         "value": "4"
       }
