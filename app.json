@@ -1,0 +1,19 @@
+{
+    "name": "IP Geolocation API",
+    "description": "A painless Geolocation API",
+    "website": "https://ipgeolocationapi.com",
+    "repository": "https://github.com/madisvain/geolocationapi",
+    "logo": "https://ipgeolocationapi.io/static/logo.svg",
+    "keywords": [
+      "python",
+      "starlette",
+      "api",
+      "geolocation"
+    ],
+    "env": {
+      "WEB_CONCURRENCY": {
+        "description": "The number of gunicorn workers to run.",
+        "value": "4"
+      }
+    }
+  }
