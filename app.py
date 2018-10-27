@@ -11,9 +11,16 @@ app = Starlette()
 app.debug = False
 
 # Middleware
-app.add_middleware(CORSMiddleware, allow_origins=['*'])
+app.add_middleware(CORSMiddleware, allow_origins=["*"])
 app.add_middleware(HTTPSRedirectMiddleware)
-app.add_middleware(TrustedHostMiddleware, allowed_hosts=["localhost:8000", "ipgeolocationapi.com"])
+app.add_middleware(
+    TrustedHostMiddleware,
+    allowed_hosts=[
+        "localhost:8000",
+        "ipgeolocationapi.com",
+        "www.ipgeolocationapi.com",
+    ],
+)
 
 
 @app.on_event("startup")
@@ -29,7 +36,7 @@ async def homepage(request):
 
 
 @app.route("/api/geocode")
-async def homepage(request):
+async def geocode(request):
     country_code = request.headers.get("CF-IPCountry", "").upper()
     country = app.countries.get(country_code)
     if country:
@@ -39,12 +46,12 @@ async def homepage(request):
 
 
 @app.route("/api/countries")
-async def homepage(request):
+async def countries(request):
     return UJSONResponse(app.countries)
 
 
 @app.route("/api/countries/{country_code}")
-async def homepage(request, country_code):
+async def countries(request, country_code):
     country_code = country_code.upper()
     country = app.countries.get(country_code)
     if country:
