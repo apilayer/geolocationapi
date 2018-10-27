@@ -2,10 +2,18 @@ import ujson
 import uvicorn
 
 from starlette.applications import Starlette
+from starlette.middleware.cors import CORSMiddleware
+from starlette.middleware.httpsredirect import HTTPSRedirectMiddleware
+from starlette.middleware.trustedhost import TrustedHostMiddleware
 from starlette.responses import UJSONResponse
 
 app = Starlette()
 app.debug = False
+
+# Middleware
+app.add_middleware(CORSMiddleware, allow_origins=['*'])
+app.add_middleware(HTTPSRedirectMiddleware)
+app.add_middleware(TrustedHostMiddleware, allowed_hosts=["localhost:8000", "ipgeolocationapi.com"])
 
 
 @app.on_event("startup")
@@ -29,6 +37,10 @@ async def homepage(request):
     else:
         return UJSONResponse({"message": "Could not geocode request."})
 
+
+@app.route("/api/countries")
+async def homepage(request):
+    return UJSONResponse(app.countries)
 
 
 @app.route("/api/countries/{country_code}")
