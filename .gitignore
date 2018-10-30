@@ -1,4 +1,6 @@
 .vscode/
+.DS_Store
+GeoLite2-Country.mmdb
 
 # Byte-compiled / optimized / DLL files
 __pycache__/

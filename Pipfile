@@ -9,6 +9,7 @@ uvicorn = "*"
 pycountry = "*"
 ujson = "*"
 gunicorn = "*"
+"geoip2" = "*"
 
 [dev-packages]
 pylint = "*"
