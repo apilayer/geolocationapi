@@ -10,6 +10,7 @@ pycountry = "*"
 ujson = "*"
 gunicorn = "*"
 "geoip2" = "*"
+requests = "*"
 
 [dev-packages]
 pylint = "*"
