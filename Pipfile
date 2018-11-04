@@ -11,10 +11,13 @@ ujson = "*"
 gunicorn = "*"
 "geoip2" = "*"
 requests = "*"
+"jinja2" = "*"
+aiofiles = "*"
 
 [dev-packages]
 pylint = "*"
 black = "*"
+"flake8" = "*"
 
 [requires]
 python_version = "3.7"

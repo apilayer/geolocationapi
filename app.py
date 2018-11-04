@@ -1,4 +1,5 @@
 import os
+import jinja2
 import ujson
 import uvicorn
 
@@ -7,7 +8,8 @@ from starlette.applications import Starlette
 from starlette.middleware.cors import CORSMiddleware
 from starlette.middleware.httpsredirect import HTTPSRedirectMiddleware
 from starlette.middleware.trustedhost import TrustedHostMiddleware
-from starlette.responses import UJSONResponse
+from starlette.staticfiles import StaticFiles
+from starlette.responses import HTMLResponse, UJSONResponse
 
 from middleware import WWWRedirectMiddleware
 
@@ -27,6 +29,9 @@ app.add_middleware(
 )
 app.add_middleware(WWWRedirectMiddleware)
 
+# Static
+app.mount("/static", StaticFiles(directory="static"))
+
 
 @app.on_event("startup")
 async def startup():
@@ -39,7 +44,10 @@ async def startup():
 
 @app.route("/")
 async def homepage(request):
-    return UJSONResponse({"hello": "world"})
+    path = os.path.join("templates", "index.html")
+    with open(path, "r") as f:
+        template = jinja2.Template(f.read())
+        return HTMLResponse(template.render())
 
 
 @app.route("/api/geolocate")
@@ -63,12 +71,12 @@ async def geolocate_ip(request):
 
 
 @app.route("/api/countries")
-async def countries(request):
+async def countries_list(request):
     return UJSONResponse(app.countries)
 
 
 @app.route("/api/countries/{country_code}")
-async def countries(request):
+async def countries_detail(request):
     country_code = request.path_params["country_code"].upper()
     country = app.countries.get(country_code)
     if country:
