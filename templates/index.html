@@ -1,23 +1,228 @@
 <!doctype html>
 <html lang="en">
   <head>
+    <title>IP Geolocation API</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="IP Geolocation API is a free service for geographically positiong your visitors in real-time.">
 
+    <!-- Favicon -->
+    <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
+    <link rel="icon" href="/favicon.ico" type="image/x-icon">
+
+    <!-- Bootstrap -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
-
-    <title>IP GEOlocation API</title>
+    <!-- Highlight.js -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.13.1/styles/atom-one-dark.min.css" integrity="sha256-akwTLZec/XAFvgYgVH1T5/369lhA2Efr22xzCNl1nHs=" crossorigin="anonymous" />
+    <!-- Google fonts -->
+    <link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet">
   </head>
-  <body>
+  <body style="font-family: 'Lato', sans-serif;">
     <div class="container">
         <div class="row">
+            <div class="col">
+                <ul class="nav justify-content-end">
+                    <li class="nav-item">
+                        <a class="nav-link" href="https://stats.uptimerobot.com/D82XySGjR" target="_blank">
+                            Status
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="https://github.com/madisvain/geolocationapi">
+                            Source
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- Splash -->
+        <div class="row">
             <div class="col text-center">
-                <img src="/static/logo.svg" alt="Geolocation API logo" class="mt-5" />
+                <img src="/static/logo.svg" alt="Geolocation API logo" class="mt-3" />
                 <h1 class="mt-3">
-                    IP GEOlocation API
+                    IP Geolocation API
                 </h1>
+                <p class="mt-3">
+                    IP Geolocation API is a free IP to Geolocation API
+                    <br/>
+                    with countries data integration.
+                </p>
+            </div>
+        </div>
+
+        <!-- Example -->
+        <div class="row">
+            <div class="col-12 col-sm-10 offset-sm-1 col-md-8 offset-md-2 col-lg-6 offset-lg-3">
+                <pre style="font-size: 12px; margin-bottom: 0;">
+                    <code class="http" style="padding: 12px 24px; border-radius: 12px;">
+GET /api/geolocate/91.213.103.0 HTTP/1.1
+Host: ipgeolocationapi.com
+
+{
+    "continent": "Europe",
+    "alpha2": "DE",
+    "country_code": "49",
+    "international_prefix": "00",
+    "name": "Germany",
+    "languages_spoken": [
+        "de"
+    ],
+    "geo": {
+        "latitude": 51.165691,
+        "longitude": 10.451526,
+    },
+    "currency_code": "EUR"
+}
+                    </code>
+                </pre>
+                <div class="text-center">
+                    <small class="font-italic font-weight-light">
+                        Actual response contains more country details.
+                    </small>
+                </div>
+            </div>
+        </div>
+
+        <!-- Features -->
+        <div class="row mt-5">
+            <div class="col-12 col-md-4">
+                <h3>What is IP geolocation</h3>
+                <p style="font-size: 15px;">
+                    <a href="https://en.wikipedia.org/wiki/Geolocation" target="_blank">Geolocation</a> is the identification or estimation of the real-world geographic location of an Internet-connected computer terminal or device.
+                </p>
+            </div>
+            <div class="col-12 col-md-4">
+                <h3>Countries information</h3>
+                <p style="font-size: 15px;">
+                    Countries information packaged as convenient JSON objects.
+                    It includes data from <a href="https://en.wikipedia.org/wiki/ISO_3166" target="_blank">ISO 3166</a> (countries and states/subdivisions ), <a href="https://en.wikipedia.org/wiki/ISO_4217" target="_blank">ISO 4217</a> (currency), and <a href="https://en.wikipedia.org/wiki/E.164" target="_blank">E.164</a> (phone numbers).
+                </p>
+            </div>
+            <div class="col-12 col-md-4">
+                <h3>IPv4/IPv6 support</h3>
+                <p style="font-size: 15px;">
+                    Geolocation data is provided by a monthly updated <a href="http://www.maxmind.com" target="_blank">MaxMind</a> Geolite2 database.
+                </p>
+            </div>
+        </div>
+
+        <!-- Usage -->
+        <div class="row mt-5">
+            <div class="col-12 col-md-8 offset-md-2">
+                <h2 class="mb-3">
+                    Usage
+                </h2>
+
+                <!-- Request geolocation -->
+                <p style="margin-bottom: 0">
+                    Geolocate the request without proving any IP.
+                    <br/>
+                    <small>
+                        This is useful for geolocating users in the frontend without the need to detect their actual IP yourself.
+                    </small>
+                </p>
+                <pre style="font-size: 12px; margin-bottom: 0;">
+                    <code class="http" style="padding: 12px 24px; border-radius: 12px;">
+GET /api/geolocate/ HTTP/1.1
+Host: ipgeolocationapi.com
+                    </code>
+                </pre>
+
+                <!-- IPv4/Ipv6 geolocation -->
+                <p style="margin-bottom: 0">
+                    Geolocate any IPv4 or IPv6 address.
+                </p>
+                <pre style="font-size: 12px; margin-bottom: 0;">
+                    <code class="http" style="padding: 12px 24px; border-radius: 12px;">
+GET /api/geolocate/91.213.103.0 HTTP/1.1
+Host: ipgeolocationapi.com
+                    </code>
+                </pre>
+
+                <!-- List all countries -->
+                <p style="margin-bottom: 0">
+                    List all countries with detailed information about location, currency, phone numbers, etc.
+                </p>
+                <pre style="font-size: 12px; margin-bottom: 0;">
+                    <code class="http" style="padding: 12px 24px; border-radius: 12px;">
+GET /api/countries HTTP/1.1
+Host: ipgeolocationapi.com
+                    </code>
+                </pre>
+
+                <!-- List all countries -->
+                <p style="margin-bottom: 0">
+                    Get specific country information by providing the ISO
+                    <a href="https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2">3166-1 alpha-2</a> country code.
+                </p>
+                <pre style="font-size: 12px; margin-bottom: 0;">
+                    <code class="http" style="padding: 12px 24px; border-radius: 12px;">
+GET /api/countries/de HTTP/1.1
+Host: ipgeolocationapi.com
+                    </code>
+                </pre>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-12 col-md-6 offset-md-3">
+                <p>
+                    <small>
+                        Please cache results whenever possible this will allow us to keep the service without any rate limits or api key requirements.
+                    </small>
+                </p>
+                <p>
+                    <small>
+                        The API comes with no warranty but we do our best effort to keep the service working relibly.
+                    </small>
+                </p>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-12 col-md-8 offset-md-2 mt-5 text-center">
+                <h3>Self-host</h3>
+                <p>
+                    Want to host this service yourself?
+                    <br/>
+                    We have a one-click deploy to heroku button for you.
+                </p>
+                <p>
+                    <a href="https://heroku.com/deploy?template=https://github.com/madisvain/geolocationapi" rel="nofollow">
+                        <img src="https://www.herokucdn.com/deploy/button.svg" alt="Deploy to Heroku">
+                    </a>
+                </p>
             </div>
         </div>
     </div>
+
+    <div style="background-color: #F0F1F4;" class="mt-5">
+        <div class="container">
+            <div class="row">
+            <div class="col my-3 text-center">
+                <ul class="list-unstyled mx-auto">
+                <li>
+                    <a class="github-button" href="https://github.com/madisvain/geolocationapi" data-size="large" data-show-count="true" aria-label="Star madisvain/geolocationapi on GitHub">Star</a>
+                    <a class="github-button" href="https://github.com/madisvain/geolocationapi/fork" data-icon="octicon-repo-forked" data-size="large" data-show-count="true" aria-label="Fork madisvain/geolocationapi on GitHub">Fork</a>
+                </li>
+                <li>
+                    Made with <span style="color: #e25555;">&hearts;</span> for coding by <a href="https://github.com/madisvain">Madis Väin</a>
+                    <br/>
+                    <small>Estonia, Tallinn</small>
+                </li>
+                </ul>
+            </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Highlight.js -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.13.1/highlight.min.js" integrity="sha256-iq71rXEe/fvjCUP9AfLY0cKudQuKAQywiUpXkRFSkLc=" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.13.1/languages/http.min.js" integrity="sha256-ze9TA1yfIP6jEh7+8fVq8CxHsydquQNe9O+P05ueO3w=" crossorigin="anonymous"></script>
+    <script>hljs.initHighlightingOnLoad();</script>
+
+    <!-- Github buttons -->
+    <script async defer src="https://buttons.github.io/buttons.js"></script>
   </body>
 </html>
