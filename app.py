@@ -42,7 +42,7 @@ async def startup():
         app.countries = ujson.loads(f.read())
 
 
-@app.route("/")
+@app.route("/", methods=["GET", "HEAD"])
 async def homepage(request):
     path = os.path.join("templates", "index.html")
     with open(path, "r") as f:
