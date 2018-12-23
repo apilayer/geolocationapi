@@ -11,6 +11,9 @@ class WWWRedirectMiddleware:
         if scope["type"] in ("http", "websocket"):
             host, port = scope["server"]
 
+            print("- - -")
+            print(host)
+            print(port)
             if host == "ipgeolocationapi.com":
                 url = URL(scope=scope)
                 url = url.replace(hostname="www.ipgeolocationapi.com")
