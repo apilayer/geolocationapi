@@ -7,7 +7,6 @@ from geoip2 import database
 from starlette.applications import Starlette
 from starlette.middleware.cors import CORSMiddleware
 from starlette.middleware.httpsredirect import HTTPSRedirectMiddleware
-from starlette.middleware.trustedhost import TrustedHostMiddleware
 from starlette.staticfiles import StaticFiles
 from starlette.responses import HTMLResponse, UJSONResponse
 
@@ -17,7 +16,7 @@ app = Starlette()
 app.debug = False
 
 # Middleware
-app.add_middleware(CORSMiddleware, allow_origins=["*"])
+app.add_middleware(CORSMiddleware, allow_origins=["*"], allow_methods=["GET", "OPTIONS"])
 app.add_middleware(HTTPSRedirectMiddleware)
 app.add_middleware(WWWRedirectMiddleware)
 
