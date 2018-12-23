@@ -20,7 +20,7 @@ app.add_middleware(
     CORSMiddleware, allow_origins=["*"], allow_methods=["GET", "OPTIONS"]
 )
 # app.add_middleware(HTTPSRedirectMiddleware)
-# app.add_middleware(WWWRedirectMiddleware)
+app.add_middleware(WWWRedirectMiddleware)
 
 # Static
 app.mount("/static", StaticFiles(directory="static"))
