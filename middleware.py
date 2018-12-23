@@ -8,15 +8,14 @@ class WWWRedirectMiddleware:
         self.app = app
 
     def __call__(self, scope: Scope) -> ASGIInstance:
-        if scope["type"] in ("http", "websocket"):
-            host, port = scope["server"]
-
-            print("- - -")
+        if scope["type"] in ("http"):
+            host = scope["headers"].get("host")
             print(host)
-            print(port)
+            """
             if host == "ipgeolocationapi.com":
                 url = URL(scope=scope)
                 url = url.replace(hostname="www.ipgeolocationapi.com")
                 return RedirectResponse(url, status_code=301)
+            """
 
         return self.app(scope)
