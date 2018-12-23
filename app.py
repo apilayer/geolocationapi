@@ -19,14 +19,6 @@ app.debug = False
 # Middleware
 app.add_middleware(CORSMiddleware, allow_origins=["*"])
 app.add_middleware(HTTPSRedirectMiddleware)
-app.add_middleware(
-    TrustedHostMiddleware,
-    allowed_hosts=[
-        "localhost:8000",
-        "ipgeolocationapi.com",
-        "www.ipgeolocationapi.com",
-    ],
-)
 app.add_middleware(WWWRedirectMiddleware)
 
 # Static
