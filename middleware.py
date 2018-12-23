@@ -15,13 +15,10 @@ class WWWRedirectMiddleware:
                 if key == b"host":
                     host = value.decode("latin-1")
                     break
-            print(host)
 
-            """
-            if host == "ipgeolocationapi.com":
+            if host and not host.startswith("www."):
                 url = URL(scope=scope)
-                url = url.replace(hostname="www.ipgeolocationapi.com")
+                url = url.replace(hostname=f"www.{host}")
                 return RedirectResponse(url, status_code=301)
-            """
 
         return self.app(scope)
