@@ -16,7 +16,7 @@ class WWWRedirectMiddleware:
                     host = value.decode("latin-1")
                     break
             print(host)
-        
+
             """
             if host == "ipgeolocationapi.com":
                 url = URL(scope=scope)
