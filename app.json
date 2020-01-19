@@ -14,6 +14,10 @@
       "GUNICORN_WORKERS": {
         "description": "The number of gunicorn workers to run.",
         "value": "4"
+      },
+      "LICENSE_KEY": {
+        "description": "License key generate from MaxMind website.",
+        "value": ""
       }
     }
   }

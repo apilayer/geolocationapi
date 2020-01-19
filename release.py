@@ -5,7 +5,7 @@ import tarfile
 import requests
 
 GEOIP2_DB_URL = (
-    "http://geolite.maxmind.com/download/geoip/database/GeoLite2-Country.tar.gz"
+    "https://download.maxmind.com/app/geoip_download?edition_id=GeoLite2-Country&suffix=tar.gz&license_key=" + os.environ['LICENSE_KEY']
 )
 
 r = requests.get(GEOIP2_DB_URL)
