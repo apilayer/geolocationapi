@@ -12,7 +12,7 @@ from starlette.responses import HTMLResponse, UJSONResponse
 from middleware import WWWRedirectMiddleware
 
 app = Starlette()
-app.debug = False
+app.debug = True
 
 # Middleware
 app.add_middleware(
